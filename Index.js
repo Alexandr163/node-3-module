@@ -29,4 +29,21 @@ yargs.command({
     }
 })
 
+
+yargs.command({
+    command: "remove",
+    discribe: "Remove note by id",
+    builder: {
+        id: {
+            type: "string",
+            discribe: "Note id",
+            demandOption: true
+
+        }
+    },
+    handler({ id }) {
+        removeNote(id)
+    }
+})
+
 yargs.parse()

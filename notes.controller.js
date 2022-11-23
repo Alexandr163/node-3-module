@@ -16,7 +16,14 @@ async function addNote(title) {
     console.log(chalk.green("Note was added!"))
 }
 
+async function removeNote(id) {
+    const notes = await getNotes()
 
+    const newNote = notes.filter(note => note.id !== id)
+
+    await fs.writeFile(notePath, JSON.stringify(newNote))
+    console.log(chalk.red("Note was removed!"))
+}
 
 
  async function getNotes() {
